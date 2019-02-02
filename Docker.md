@@ -6,7 +6,9 @@
 **REMOVE A CONTAINER** - `docker rm [container id]`
 **LIST ALL IMAGES** - `docker image ls`  
 **REMOVE AN IMAGE** - `docker image rm [image name]`  
-**VIEW LOGS ON CONTAINER** - `docker logs [container id]`
+**VIEW LOGS ON CONTAINER** - `docker logs [container id]`  
+**DISPLAY CONTAINER INFORMATION** - `docker inspect [container id]`  
+**DISPLAY SPECIFIC CONTAINER INFORMATION** - `docker inspect -f '{{.NetworkSetting.IPAddress}}' [container id]`
 
 ## How do I install docker?
 
@@ -50,4 +52,7 @@ https://hackernoon.com/dont-install-postgres-docker-pull-postgres-bee20e200198
 
 ## How do I communicate over the network between two docker containers?
 
-- ???
+- https://www.linode.com/docs/applications/containers/docker-container-communication/#connect-two-containers
+
+- `docker run --link=[container name]:[desired host name] [container to run]`
+  - i.e. `--link=test-container:database` == postgresql://database:5432

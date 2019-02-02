@@ -19,3 +19,10 @@ EXPOSE 8080
 ADD /build/libs/service-0.0.1-SNAPSHOT.jar service.jar
 ENTRYPOINT ["java", "-jar", "service.jar"]
 ```
+
+## How do I access environment variables in my app?
+
+### Simple Kotlin Solution
+
+- `System.getEnv('[variable name]')`
+- toggle configuration based on this
