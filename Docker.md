@@ -4,6 +4,9 @@
 **LIST ALL CONTAINERS** - `docker ps -a`  
 **STOP A CONTAINER** - `docker stop [container id]`  
 **REMOVE A CONTAINER** - `docker rm [container id]`
+**LIST ALL IMAGES** - `docker image ls`  
+**REMOVE AN IMAGE** - `docker image rm [image name]`  
+**VIEW LOGS ON CONTAINER** - `docker logs [container id]`
 
 ## How do I install docker?
 
@@ -38,3 +41,13 @@ https://hackernoon.com/dont-install-postgres-docker-pull-postgres-bee20e200198
 
 - **CONNECT TO THE CONTAINER**
   - `psql -h localhost -U postgres -d [database-name] -p [port]`
+
+## Start Container From Dockerfile
+
+- cd to the directory containing the Dockerfile
+- Create an image: `docker build -f Dockerfile -t [image-name] .`
+- Run the image: `docker run -p 8080:8080 dockerservice`
+
+## How do I communicate over the network between two docker containers?
+
+- ???
