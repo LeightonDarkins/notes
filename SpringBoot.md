@@ -26,3 +26,60 @@ ENTRYPOINT ["java", "-jar", "service.jar"]
 
 - `System.getEnv('[variable name]')`
 - toggle configuration based on this
+
+## How do I use \*.properties files with Kotlin (Spring Classes Only)
+
+- add `annotationProcessor "org.springframework.boot:spring-boot-configuration-processor"` to gradle dependencies
+- add a new class to house your properties
+
+```
+@ConfigurationProperties(prefix = "service")
+class ServiceProperties {
+    lateinit var property: String
+}
+```
+
+- register the properties class in the application class
+
+```
+@EnableConfigurationProperties(ServiceProperties::class)
+class ServiceApplication
+```
+
+- inject the properties object into the class that needs it
+
+```
+class GreetingController(private val properties: ServiceProperties) {
+```
+
+- use the properties object as normal
+
+```
+properties.property
+```
+
+## How do I use \*.properties files with Kotlin
+
+after starting the application context
+
+```
+val appContext = SpringApplication.run(ServiceApplication::class.java, *args)
+```
+
+get a copy of your peropeties bean/class
+
+```
+val config = appContext.getBean(ServiceProperties::class.java)
+```
+
+then access the props as above
+
+```
+System.out.println("Running Service In Environment: ${config.environment}")
+```
+
+## Environment Specific Config
+
+- create a new \*.properties file
+- give it a name matching `application-*profile*.properties`
+- now when the app is run with `*profile*` via an IDE or command line, the props in `application-*profile*.properties` will apply
