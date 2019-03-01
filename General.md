@@ -44,3 +44,48 @@ In IDEA:
 
 - `emr/out/production/nm-trunk`
 - copy ALL the things...
+
+### PSS Compiler Args (for 11 JVM)
+
+"java compiler -> compilation options (for nm-trunk)" in IDEA settings
+
+- --add-exports=java.rmi/sun.rmi.server=ALL-UNNAMED
+- --add-exports=java.desktop/sun.swing=ALL-UNNAMED
+- --add-exports=java.desktop/sun.print=ALL-UNNAMED
+
+### Elastic Search Tasks
+
+- add new jars, address compiler issues (unit testing)
+- Lucene Transform: do we need this anymore?
+- ElasticSearch/Index/Store/FS: related to Lucene-Transform? (remove if item above is no longer needed)
+
+- create/validate/recreate index on startup
+
+- deployment/config (without docker)
+
+- deployment/config (with docker)
+
+- shareback/documentation
+
+### ElasticSearch Libs
+
+- guava v16 ???
+
+### ElasticSearch Code Changes
+
+#### FieldIndex .not_analyzed
+
+- `@Field(type=FieldType.String index=FieldIndex.not_analyzed)` is now `@Field(type=FieldType.Keyword)`
+  - https://stackoverflow.com/questions/45406577/how-to-config-not-analyzed-with-field-annotation-in-spring-data-elasticsearch-3
+  - https://www.elastic.co/guide/en/elasticsearch/reference/5.5/breaking_50_mapping_changes.html
+
+#### @NestedField
+
+- `@NestedField()` is now `@InnerField()`
+  - [commit where the change was made](https://github.com/spring-projects/spring-data-elasticsearch/commit/61880671a45e6c25d751bd50737647fc84c7306a#diff-864bb378fdcbab1d7233f1943b59177d)
+
+#### FieldIndex .no
+
+- anywhere you see `FieldIndex.no` now should be `false` i.e. this field cannot be searched
+- `@Field(type=FieldType.Long, index=FieldIndex.no)` is now `@Field(type=FieldType.Long, index=false)`
+  - [commit where INDEX was changed from an ENUM to a BOOLEAN](https://github.com/spring-projects/spring-data-elasticsearch/commit/089d7746be2f2fc4a395bd5c814f664729121f21#diff-864bb378fdcbab1d7233f1943b59177d)
