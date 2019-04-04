@@ -1,14 +1,37 @@
 # DOCKER
 
-**LIST RUNNING CONTAINERS** - `docker ps`  
-**LIST ALL CONTAINERS** - `docker ps -a`  
-**STOP A CONTAINER** - `docker stop [container id]`  
-**REMOVE A CONTAINER** - `docker rm [container id]`
-**LIST ALL IMAGES** - `docker image ls`  
-**REMOVE AN IMAGE** - `docker image rm [image name]`  
-**VIEW LOGS ON CONTAINER** - `docker logs [container id]`  
-**DISPLAY CONTAINER INFORMATION** - `docker inspect [container id]`  
-**DISPLAY SPECIFIC CONTAINER INFORMATION** - `docker inspect -f '{{.NetworkSetting.IPAddress}}' [container id]`
+## Containers
+
+- **LIST RUNNING CONTAINERS** - `docker ps`
+- **LIST ALL CONTAINERS** - `docker ps -a`
+- **STOP A CONTAINER** - `docker stop [container id]`
+- **REMOVE A CONTAINER** - `docker rm [container id]`
+
+## Images
+
+- **LIST ALL IMAGES** - `docker image ls`
+- **REMOVE AN IMAGE** - `docker image rm [image name]`
+
+## Logs
+
+- **VIEW LOGS ON CONTAINER** - `docker logs [container id]`
+- **TAIL LOGS ON A CONTAINER** - `docker logs [container id] -f`
+
+## Metadata
+
+- **DISPLAY CONTAINER INFORMATION** - `docker inspect [container id]`
+- **DISPLAY SPECIFIC CONTAINER INFORMATION** - `docker inspect -f '{{.NetworkSetting.IPAddress}}' [container id]`
+
+## Docker Compose
+
+- **START CONTAINER VIA DOCKER COMPOSE** - `docker-compose up`
+- **START CONTAINER VIA DOCKER COMPOSE WITHOUT CONSOLE LOGGING** - `docker-compose up -d`
+- **STOP CONTAINER VIA DOCKER COMPOSE** - `docker-compose down`
+- **STOP CONTAINER VIA DOCKER COMPOSE & REMOVE THE ARTIFACTS** - `docker-compose down -v`
+
+## Bash
+
+- **START A BASH SESSION ON A CONTAINER** - `docker exec -i -t [container-id] /bin/bash`
 
 ## How do I install docker?
 

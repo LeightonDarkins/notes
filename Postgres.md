@@ -35,3 +35,9 @@
 - `pg_ctl —help`
 - `pg_ctl stop -D /Library/PostgreSQL/9.3/data`
 - `pg_ctl start -D /Library/PostgreSQL/9.3/data -l /Library/PostgreSQL/9.3/data/server.log`
+
+## Replace pssemr Schema PGAdminIII
+
+- Use setup cluster from here: https://confluence.telushealth.com/display/PSS/Database+Setup
+- Run Server via IDEA against that DB to create the schema
+- Restore from backup file'

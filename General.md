@@ -89,3 +89,82 @@ In IDEA:
 - anywhere you see `FieldIndex.no` now should be `false` i.e. this field cannot be searched
 - `@Field(type=FieldType.Long, index=FieldIndex.no)` is now `@Field(type=FieldType.Long, index=false)`
   - [commit where INDEX was changed from an ENUM to a BOOLEAN](https://github.com/spring-projects/spring-data-elasticsearch/commit/089d7746be2f2fc4a395bd5c814f664729121f21#diff-864bb378fdcbab1d7233f1943b59177d)
+
+## Outcomes Questions
+
+### Entry Points?
+
+    - know where to look
+    - what to expect
+
+#### 16640
+
+RiskFactorCategoryBuilder.java
+RFAlcoholResourceItem.java
+
+#### 23289
+
+UserManager
+getActiveDoctors
+
+### General?
+
+pss.properties file
+add a value
+com.pss.outcomes.IsODA = true
+
+OutcomesDashboardModule.java
+
+In the UI
+Reports -> Outcomes Dashboard
+??? -> Scheduled Reports Setup
+
+    Record Window
+      Settings
+        EditMeasureDefinitions
+          Measure == group of metrics
+          Metric == search
+
+    Records Window
+      Edit Searches
+        outcomes have the guage icon
+
+    Records Window
+      Add Search Criterion
+        wysiwyg query editor
+        stores the values, the generates SQL on demand
+
+### 16388
+
+in scope?
+big change?
+might just be changing some API?
+
+CriterionSearchImportExportHelper
+
+toolbars == custom form
+
+Records -> Settings -> Edit Custom Forms
+
+### 21415
+
+- seems simple
+- TableSearch.java
+  - changing this seems scary
+- SearchReportTableSearch.java
+  - this could be what we need
+- SearchReport.java
+  - something to do here?
+
+OutcomesDashboardPresenter.java??
+somehow meaningful
+
+### 20736 / 23193 / 16792
+
+- doing this "per-physician" may not ahve any effect
+- issue are more likely to be realted to like's and wildcards
+
+### 22730
+
+- basically a project, not some small thing
+- there's an epic for this
